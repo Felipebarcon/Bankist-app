@@ -1,0 +1,26 @@
+let arr = ['a', 'b', 'c', 'd', 'e'];
+
+// SLICE ==> return a new array but don't change original array
+console.log(arr.slice(1, -2));
+console.log(arr.slice());
+console.log([...arr]);
+
+//SPLICE ==> Return part of the array and Change the original array
+//console.log(arr.splice(2));
+arr.splice(-1);
+arr.splice(1, 2); // second argument ==> nbr of elements we want to delete
+console.log(arr);
+
+// REVERSE ==> Mutated the original array
+let arr1 = ['a', 'b', 'c', 'd', 'e'];
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+console.log(arr2.reverse());
+console.log(arr2);
+
+//CONCAT
+const letters = arr1.concat(arr2);
+console.log(letters);
+console.log([...arr1, ...arr2]);
+
+// JOIN
+console.log(letters.join('-'));
