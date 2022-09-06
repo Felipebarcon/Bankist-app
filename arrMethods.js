@@ -24,3 +24,14 @@ console.log([...arr1, ...arr2]);
 
 // JOIN
 console.log(letters.join('-'));
+
+// AT METHOD
+const arry = [23, 11, 64];
+console.log(arry.at(0));
+
+// Getting the last element
+console.log(arry[arry.length - 1]);
+console.log(arry.slice(-1)[0]);
+console.log(arry.at(-1));
+
+console.log('Felipe'.at(0)); // Works on string!
