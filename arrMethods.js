@@ -35,3 +35,28 @@ console.log(arry.slice(-1)[0]);
 console.log(arry.at(-1));
 
 console.log('Felipe'.at(0)); // Works on string!
+
+// FOR EACH
+
+const accountMovements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+console.log('----------FOR OF LOOP ----------');
+
+for (const [i, movement] of accountMovements.entries()) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(movement)}`);
+  }
+}
+
+console.log('----------FOR EACH LOOP ----------');
+
+// Arguments needs to be passed always in this order: current element, index, global-element
+accountMovements.forEach(function(mov, i, arr) {
+  if (mov > 0) {
+    console.log(`Movement ${i + 1}: You deposited ${mov}`);
+  } else {
+    console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
+  }
+});
