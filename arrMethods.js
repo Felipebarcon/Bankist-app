@@ -60,3 +60,24 @@ accountMovements.forEach(function(mov, i, arr) {
     console.log(`Movement ${i + 1}: You withdrew ${Math.abs(mov)}`);
   }
 });
+
+console.log('----------FOR EACH LOOP ON MAPS ----------');
+
+const currenciesMap = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling']
+]);
+
+currenciesMap.forEach(function(value, key, map) {
+  console.log(`${key}: ${value}`);
+});
+
+console.log('----------FOR EACH LOOP ON MAPS ----------');
+
+const currenciesUnique = new Set(['USD', 'GPB', 'USD', 'EUR', 'EUR']);
+console.log(currenciesUnique);
+
+currenciesUnique.forEach(function(value, _, map) {
+  console.log(`${value}: ${value}`);
+});
