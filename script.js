@@ -6,7 +6,7 @@
 
 // Data
 const account1 = {
-  owner: 'Jonas Schmedtmann',
+  owner: 'Felipe Barcon',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 1111
@@ -81,6 +81,15 @@ const displayMovements = function(movements) {
   });
 };
 displayMovements(account1.movements);
+
+// Creating usernames
+
+const createUsernames = function(accs) {
+  accs.forEach(function(acc) {
+    acc.username = acc.owner.toLowerCase().split(' ').map(name => name[0]).join('');
+  });
+};
+createUsernames(accounts);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
