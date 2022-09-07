@@ -138,3 +138,33 @@ const checkDogs = function(arr1, arr2) {
 
 // checkDogs(dogsJulia, dogsKate);
 checkDogs(dogsJulia2, dogsKate2);
+
+//
+
+console.log('----------DATA TRANSFORMATION WITH MAP, FILTER AND REDUCE ----------');
+console.log('----------MAP METHOD ----------');
+
+const eurToUSD = 0.99;
+
+/*const movementsUSD = movements.map(function(mov) {
+  return mov * eurToUSD;
+});*/
+
+const movementsUSD = movements.map(mov => mov * eurToUSD);
+
+console.log(movements);
+console.log(movementsUSD);
+
+// SAME BUT WITH A FOR OF
+const movementsUSDfor = [];
+for (const mov of movements) {
+  movementsUSDfor.push(mov * eurToUSD);
+}
+console.log(movementsUSDfor);
+
+// MAP PARAMETERS
+const movementsDescription = movements.map((mov, i) =>
+  `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
+);
+
+console.log(movementsDescription);
