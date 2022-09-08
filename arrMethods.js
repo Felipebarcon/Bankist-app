@@ -246,3 +246,9 @@ const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 
 console.log(avg1, avg2);
+
+// THE MAGIC OF CHAINING METHODS
+console.log('----------CHAINING METHODS ----------');
+
+const totalDepositsUSD = movements.filter(mov => mov > 0).map(mov => mov * eurToUSD).reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
