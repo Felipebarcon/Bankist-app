@@ -284,3 +284,13 @@ const calcAverageHumanAge2 = ages => ages.map(age => age <= 2 ? 2 * age : 16 + a
 const test1 = calcAverageHumanAge2([5, 2, 4, 1, 15, 8, 3]);
 const test2 = calcAverageHumanAge2([16, 6, 10, 5, 6, 1, 4]);
 console.log(test1, test2);
+
+// FIND METHOD
+console.log('----------FIND METHOD----------');
+// Find the first element of the array that is true
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(firstWithdrawal);
+
+const account = accounts.find(acc => acc.owner === 'Felipe Barcon');
+console.log(account); // ==> return the object where Felipe Barcon is stored
+
