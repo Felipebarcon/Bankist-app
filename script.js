@@ -203,3 +203,24 @@ btnTransfer.addEventListener('click', function(e) {
 /////////////////////////////////////////////////
 // CLOSING ACCOUNT
 /////////////////////////////////////////////////
+btnClose.addEventListener('click', function(e) {
+  e.preventDefault();
+
+  if (inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin) {
+
+    // Find the index of the account we want to delete
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username);
+
+    // Delete the account
+    accounts.splice(index, 1);
+
+    // Hide UI
+    containerApp.style.opacity = 0;
+  }
+
+  // Clear input fields
+  inputCloseUsername.value = inputClosePin.value = '';
+
+});
