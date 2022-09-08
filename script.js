@@ -201,6 +201,27 @@ btnTransfer.addEventListener('click', function(e) {
 });
 
 /////////////////////////////////////////////////
+// REQUEST A LOAN
+/////////////////////////////////////////////////
+btnLoan.addEventListener('click', function(e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  // Validate if any deposit on the account is at least 10% of the loan asked
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    // Add movement
+    currentAccount.movements.push(amount);
+
+    // Update UI
+    updateUI(currentAccount);
+  }
+
+  // Clear input fields
+  inputLoanAmount.value = '';
+});
+
+/////////////////////////////////////////////////
 // CLOSING ACCOUNT
 /////////////////////////////////////////////////
 btnClose.addEventListener('click', function(e) {
@@ -222,5 +243,4 @@ btnClose.addEventListener('click', function(e) {
 
   // Clear input fields
   inputCloseUsername.value = inputClosePin.value = '';
-
 });

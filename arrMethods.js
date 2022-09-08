@@ -1,10 +1,10 @@
 // LECTURES
 
 const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling']
-]);
+                             ['USD', 'United States dollar'],
+                             ['EUR', 'Euro'],
+                             ['GBP', 'Pound sterling']
+                           ]);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
@@ -76,10 +76,10 @@ accountMovements.forEach(function(mov, i, arr) {
 console.log('----------FOR EACH LOOP ON MAPS ----------');
 
 const currenciesMap = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling']
-]);
+                                ['USD', 'United States dollar'],
+                                ['EUR', 'Euro'],
+                                ['GBP', 'Pound sterling']
+                              ]);
 
 currenciesMap.forEach(function(value, key, map) {
   console.log(`${key}: ${value}`);
@@ -131,7 +131,8 @@ const checkDogs = function(arr1, arr2) {
   const dogs = correctedJuliaDogs.concat(arr2);
 
   dogs.forEach(function(value, i) {
-    value < 3 ? console.log(`Dog number ${i + 1} is still a puppy 🐶`) : console.log(`Dog number ${i + 1} is an adult, and is ${value} years old`);
+    value < 3 ? console.log(`Dog number ${i + 1} is still a puppy 🐶`) :
+    console.log(`Dog number ${i + 1} is an adult, and is ${value} years old`);
 
   });
 };
@@ -141,7 +142,8 @@ checkDogs(dogsJulia2, dogsKate2);
 
 //
 
-console.log('----------DATA TRANSFORMATION WITH MAP, FILTER AND REDUCE ----------');
+console.log(
+  '----------DATA TRANSFORMATION WITH MAP, FILTER AND REDUCE ----------');
 console.log('----------MAP METHOD ----------');
 
 const eurToUSD = 0.99;
@@ -164,7 +166,10 @@ console.log(movementsUSDfor);
 
 // MAP PARAMETERS
 const movementsDescription = movements.map((mov, i) =>
-  `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`
+                                             `Movement ${i + 1}: You ${mov > 0 ?
+                                                                       'deposited' :
+                                                                       'withdrew'} ${Math.abs(
+                                               mov)}`
 );
 
 console.log(movementsDescription);
@@ -194,7 +199,8 @@ console.log(balance);
 
 // Maximum value
 
-const maxValue = movements.reduce((acc, val) => acc > val ? acc : val, movements[0]);
+const maxValue = movements.reduce((acc, val) => acc > val ? acc : val,
+                                  movements[0]);
 console.log(maxValue);
 
 ///////////////////////////////////////
@@ -276,9 +282,12 @@ GOOD LUCK 😀
 */
 console.log('----------CHALLENGE 3----------');
 
-const calcAverageHumanAge2 = ages => ages.map(age => age <= 2 ? 2 * age : 16 + age * 4)
-  .filter(age => age >= 18)
-  .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+const calcAverageHumanAge2 = ages => ages.map(
+  age => age <= 2 ? 2 * age : 16 + age * 4)
+                                         .filter(age => age >= 18)
+                                         .reduce((acc, age, i,
+                                                  arr) => acc + age / arr.length,
+                                                 0);
 
 
 const test1 = calcAverageHumanAge2([5, 2, 4, 1, 15, 8, 3]);
@@ -294,3 +303,23 @@ console.log(firstWithdrawal);
 const account = accounts.find(acc => acc.owner === 'Felipe Barcon');
 console.log(account); // ==> return the object where Felipe Barcon is stored
 
+// SOME AND EVERY METHOD
+console.log('----------SOME AND EVERY METHODS----------');
+
+console.log(movements);
+// EQUALITY
+console.log(movements.includes(-130)); // returns true of false for equality
+
+// SOME : CONDITION
+const anyDeposits = movements.some(mov => mov > 4500);  // check for condition
+console.log(anyDeposits);
+
+// EVERY ==> return true if all the occurrences passed the test
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+// Separate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
