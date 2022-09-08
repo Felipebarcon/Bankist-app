@@ -349,3 +349,31 @@ const overallBalance2 = accounts.flatMap(acc => acc.movements)
                                 .reduce((acc, mov) => acc + mov, 0);
 console.log(overallBalance2);
 
+// SORTING ARRAYS ==> Mutate the original array
+console.log('----------SORTING ARRAYS----------');
+// Strings
+const owners = ['Felipe', 'Jonas', 'Melina', 'Theo'];
+console.log(owners.sort());
+
+// Numbers
+// console.log(movements.sort()); Don't work because sort is base on strings
+
+// return < 0, A, B (keep order)
+// return > 0, B, A (switch order)
+
+// Ascending
+/*movements.sort((a, b) => {
+  if (a > b) return 1;
+  if (a < b) return -1;
+});*/
+/*movements.sort((a, b) => a - b);
+console.log(movements);*/
+
+// Descending
+/*movements.sort((a, b) => {
+  if (a > b) return -1;
+  if (a < b) return 1;
+});*/
+/*
+movements.sort((a, b) => b - a);
+console.log(movements);*/
