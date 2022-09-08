@@ -323,3 +323,29 @@ const deposit = mov => mov > 0;
 console.log(movements.some(deposit));
 console.log(movements.every(deposit));
 console.log(movements.filter(deposit));
+
+// FLAT AND FLATMAP METHOD
+console.log('----------FLAT AND FLATMAP METHOD----------');
+const nestedArr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(nestedArr.flat());
+
+const deepArr = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(deepArr.flat(2));
+
+/*const accountMovements2 = accounts.map(acc => acc.movements);
+console.log(accountMovements2);
+const allMovements = accountMovements2.flat();
+console.log(allMovements);
+const overallBalance = allMovements.reduce((acc, mov) => acc + mov, 0);*/
+
+// Flat
+const overallBalance = accounts.map(acc => acc.movements)
+                               .flat()
+                               .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance);
+
+// FlatMap
+const overallBalance2 = accounts.flatMap(acc => acc.movements)
+                                .reduce((acc, mov) => acc + mov, 0);
+console.log(overallBalance2);
+
