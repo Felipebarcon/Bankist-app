@@ -250,5 +250,13 @@ console.log(avg1, avg2);
 // THE MAGIC OF CHAINING METHODS
 console.log('----------CHAINING METHODS ----------');
 
-const totalDepositsUSD = movements.filter(mov => mov > 0).map(mov => mov * eurToUSD).reduce((acc, mov) => acc + mov, 0);
+//PIPELINE
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map((mov, i, arr) => {
+    //console.log(arr);
+    return mov * eurToUSD;
+  })
+  //.map(mov => mov * eurToUSD)
+  .reduce((acc, mov) => acc + mov, 0);
 console.log(totalDepositsUSD);

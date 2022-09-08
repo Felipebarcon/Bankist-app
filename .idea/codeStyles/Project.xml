@@ -37,6 +37,7 @@
     </codeStyleSettings>
     <codeStyleSettings language="JavaScript">
       <option name="RIGHT_MARGIN" value="80" />
+      <option name="ALIGN_MULTILINE_CHAINED_METHODS" value="true" />
       <option name="ALIGN_MULTILINE_FOR" value="false" />
       <option name="METHOD_CALL_CHAIN_WRAP" value="2" />
       <option name="SOFT_MARGINS" value="80" />
