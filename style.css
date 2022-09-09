@@ -83,42 +83,40 @@ nav {
   position: relative;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -60%);
+  transform: translate(-50%, -100%);
   width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  border-radius: 1rem;
-  padding: 3rem 4rem;
-  background-image: linear-gradient(to top left, #39b385, #9be15d);
-}
-
-.secondary-heading__welcome {
-  text-align: center;
 }
 
 .secondary-heading__welcome {
   margin-bottom: 6.4rem;
-  font-size: 3rem;
+  font-size: 4.8rem;
   font-weight: 600;
   color: #333;
 }
 
 .welcome__message {
   margin-bottom: 1.5rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 600;
   color: #333;
 }
 
 .welcome__data {
   margin-bottom: 2.4rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-style: italic;
   font-weight: lighter;
   color: #555;
   list-style: none;
+}
+
+.ph-user,
+.ph-key {
+  margin-right: 1rem;
 }
 
 .welcome__data span {
@@ -126,16 +124,11 @@ nav {
   font-style: normal;
 }
 
-.hide {
-  display: none !important;
-  transition: all 1s;
-}
-
 /* MAIN */
 .app {
   position: relative;
   max-width: 100rem;
-  margin: 4rem auto;
+  margin: 20rem auto;
   display: grid;
   grid-template-columns: 4fr 3fr;
   grid-template-rows: auto repeat(3, 15rem) auto;
@@ -346,6 +339,8 @@ h2 {
   font-weight: 600;
 }
 
+/* FOOTER */
+
 footer {
   display: flex;
   flex-direction: column;
@@ -366,4 +361,14 @@ a {
 
 a:hover {
   color: #2e9b77;
+}
+
+/* Reusable classes*/
+
+.hide {
+  display: none;
+}
+
+.text-center {
+  text-align: center;
 }
