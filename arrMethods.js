@@ -377,3 +377,39 @@ console.log(movements);*/
 /*
 movements.sort((a, b) => b - a);
 console.log(movements);*/
+
+// OTHERS WAY TO CREATE ARRAY
+
+// Empty methods and fill methods
+const numX = [1, 2, 3, 4, 5, 6];
+console.log(new Array(1, 2, 3, 4, 5, 6));
+
+const arrX = new Array(7);
+console.log(arrX);
+
+// arrX.fill(1);
+// arrX.fill(1);
+arrX.fill(1, 3, 5);
+console.log(arrX);
+
+numX.fill(23, 3, 6);
+console.log(numX);
+
+// Array.from
+const arrY = Array.from({ length: 7 }, () => 1);
+console.log(arrY);
+
+const arrZ = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(arrZ);
+
+
+labelBalance.addEventListener('click', function() {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', ''))
+  );
+
+  console.log(movementsUI);
+
+  mouvementsUI2 = [...document.querySelectorAll('.movements__value')]; // BAD Method because we can't chain .map
+});
