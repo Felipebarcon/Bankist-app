@@ -244,6 +244,9 @@ btnClose.addEventListener('click', function(e) {
 
     // Hide UI
     containerApp.style.opacity = 0;
+
+    // Display Welcome message
+    labelUi.classList.remove('hide');
   }
 
   // Clear input fields
