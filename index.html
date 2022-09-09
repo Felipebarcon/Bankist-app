@@ -15,6 +15,8 @@
   <title>Bankist</title>
 </head>
 <body>
+
+
 <!-- TOP NAVIGATION -->
 <nav>
   <p class='welcome'>Log in to get started</p>
@@ -35,6 +37,17 @@
     <button class='login__btn'>&rarr;</button>
   </form>
 </nav>
+
+<!--HIDE UI AND WELCOME MESSAGE-->
+<div class="hide__ui">
+  <h2 class="secondary-heading__welcome">Welcome to you bank application</h2>
+  <p class="welcome__message">Please enter your username and pin to login into your account</p>
+  <ul class="welcome__data">
+    <li><span>Username:</span> fb</li>
+    <li><span>Pin:</span> 1111</li>
+  </ul>
+  <p class="welcome__message">For more information on how this app work check out the link on the footer</p>
+</div>
 
 <main class='app'>
   <!-- BALANCE -->
@@ -119,9 +132,11 @@
   </p>
 </main>
 
-<!--<footer>
+<footer>
   &copy; by Felipe Barcon using Jonas Schmedtmann's course
-</footer>-->
+  <a href="https://github.com/Felipebarcon/Bankist-app/blob/master/README.md" target="_blank" class="welcome__link">How it works</a>
+</footer>
+
 
 <script src='script.js'></script>
 <!--<script src='arrMethods.js'></script>-->

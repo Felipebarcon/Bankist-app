@@ -36,6 +36,7 @@ const account4 = {
 const accounts = [account1, account2, account3, account4];
 
 // Elements
+const labelUi = document.querySelector('.hide__ui')
 const labelWelcome = document.querySelector('.welcome');
 const labelDate = document.querySelector('.date');
 const labelBalance = document.querySelector('.balance__value');
@@ -167,6 +168,7 @@ btnLogin.addEventListener('click', function(e) {
     labelWelcome.textContent = `Welcome back ${currentAccount.owner.split(
       ' ')[0]}`;
     containerApp.style.opacity = 100;
+    labelUi.classList.add('hide');
 
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
