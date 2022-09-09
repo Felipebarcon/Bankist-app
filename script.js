@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -6,132 +6,134 @@
 
 // Data
 const account1 = {
-  owner: 'Felipe Barcon',
+  owner: "Felipe Barcon",
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2,
-  pin: 1111
+  pin: 1111,
 };
 
 const account2 = {
-  owner: 'Jessica Davis',
+  owner: "Jessica Davis",
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
-  pin: 2222
+  pin: 2222,
 };
 
 const account3 = {
-  owner: 'Steven Thomas Williams',
+  owner: "Steven Thomas Williams",
   movements: [200, -200, 340, -300, -20, 50, 400, -460],
   interestRate: 0.7,
-  pin: 3333
+  pin: 3333,
 };
 
 const account4 = {
-  owner: 'Sarah Smith',
+  owner: "Sarah Smith",
   movements: [430, 1000, 700, 50, 90],
   interestRate: 1,
-  pin: 4444
+  pin: 4444,
 };
 
 const accounts = [account1, account2, account3, account4];
 
 // Elements
-const labelUi = document.querySelector('.hide__ui')
-const labelWelcome = document.querySelector('.welcome');
-const labelDate = document.querySelector('.date');
-const labelBalance = document.querySelector('.balance__value');
-const labelSumIn = document.querySelector('.summary__value--in');
-const labelSumOut = document.querySelector('.summary__value--out');
-const labelSumInterest = document.querySelector('.summary__value--interest');
-const labelTimer = document.querySelector('.timer');
+const labelUi = document.querySelector(".hide__ui");
+const labelWelcome = document.querySelector(".welcome");
+const labelDate = document.querySelector(".date");
+const labelBalance = document.querySelector(".balance__value");
+const labelSumIn = document.querySelector(".summary__value--in");
+const labelSumOut = document.querySelector(".summary__value--out");
+const labelSumInterest = document.querySelector(".summary__value--interest");
+const labelTimer = document.querySelector(".timer");
 
-const containerApp = document.querySelector('.app');
-const containerMovements = document.querySelector('.movements');
+const containerApp = document.querySelector(".app");
+const containerMovements = document.querySelector(".movements");
 
-const btnLogin = document.querySelector('.login__btn');
-const btnTransfer = document.querySelector('.form__btn--transfer');
-const btnLoan = document.querySelector('.form__btn--loan');
-const btnClose = document.querySelector('.form__btn--close');
-const btnSort = document.querySelector('.btn--sort');
+const btnLogin = document.querySelector(".login__btn");
+const btnTransfer = document.querySelector(".form__btn--transfer");
+const btnLoan = document.querySelector(".form__btn--loan");
+const btnClose = document.querySelector(".form__btn--close");
+const btnSort = document.querySelector(".btn--sort");
 
-const inputLoginUsername = document.querySelector('.login__input--user');
-const inputLoginPin = document.querySelector('.login__input--pin');
-const inputTransferTo = document.querySelector('.form__input--to');
-const inputTransferAmount = document.querySelector('.form__input--amount');
-const inputLoanAmount = document.querySelector('.form__input--loan-amount');
-const inputCloseUsername = document.querySelector('.form__input--user');
-const inputClosePin = document.querySelector('.form__input--pin');
+const inputLoginUsername = document.querySelector(".login__input--user");
+const inputLoginPin = document.querySelector(".login__input--pin");
+const inputTransferTo = document.querySelector(".form__input--to");
+const inputTransferAmount = document.querySelector(".form__input--amount");
+const inputLoanAmount = document.querySelector(".form__input--loan-amount");
+const inputCloseUsername = document.querySelector(".form__input--user");
+const inputClosePin = document.querySelector(".form__input--pin");
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
-
 
 /////////////////////////////////////////////////
 // Adding account movements to movement container
 /////////////////////////////////////////////////
-const displayMovements = function(movements, sort = false) {
-  containerMovements.innerHTML = '';
+const displayMovements = function (movements, sort = false) {
+  containerMovements.innerHTML = "";
 
-  const movs = sort ? movements.slice()
-                               .sort((a, b) => a - b) : movements;
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
 
-  movs.forEach(function(mov, i) {
-    const type = mov > 0 ? 'deposit' : 'withdrawal';
+  movs.forEach(function (mov, i) {
+    const type = mov > 0 ? "deposit" : "withdrawal";
     const html = `    
       <div class='movements__row'>
-        <div class='movements__type movements__type--${type}'>${i + 1} ${type}</div>
+        <div class='movements__type movements__type--${type}'>${
+      i + 1
+    } ${type}</div>
         <div class='movements__value'>${mov}€</div>
       </div>
     `;
 
-    containerMovements.insertAdjacentHTML('afterbegin', html);
+    containerMovements.insertAdjacentHTML("afterbegin", html);
   });
 };
 
 /////////////////////////////////////////////////
 // ACCOUNT BALANCE
 /////////////////////////////////////////////////
-const calcDisplayBalance = function(acc) {
+const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${acc.balance}€`;
 };
 
-
 /////////////////////////////////////////////////
 // DISPLAY SUMMARY
 /////////////////////////////////////////////////
-const calcDisplaySummary = function(acc) {
+const calcDisplaySummary = function (acc) {
   // Calculate and display total deposits from movements
-  const incomes = acc.movements.filter(mov => mov > 0)
-                     .reduce((acc, mov) => acc + mov);
+  const incomes = acc.movements
+    .filter((mov) => mov > 0)
+    .reduce((acc, mov) => acc + mov);
   labelSumIn.textContent = `${incomes}€`;
 
   // Calculate and display total withdrawals from movements
-  const out = acc.movements.filter(mov => mov < 0)
-                 .reduce((acc, mov) => acc + mov);
+  const out = acc.movements
+    .filter((mov) => mov < 0)
+    .reduce((acc, mov) => acc + mov);
   labelSumOut.textContent = `${Math.abs(out)}€`;
 
   // Calculate and display total interest from each deposit
-  const interest = acc.movements.filter(mov => mov > 0)
-                      .map(deposit => deposit * acc.interestRate / 100)
+  const interest = acc.movements
+    .filter((mov) => mov > 0)
+    .map((deposit) => (deposit * acc.interestRate) / 100)
     // Only apply interest if they are > 1
-                      .filter((int) => {
-                        return int >= 1;
-                      })
-                      .reduce((acc, int) => acc + int, 0);
+    .filter((int) => {
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `${interest}€`;
 };
-
 
 /////////////////////////////////////////////////
 // CREATING USERNAMES
 /////////////////////////////////////////////////
-const createUsernames = function(accs) {
-  accs.forEach(function(acc) {
-    acc.username = acc.owner.toLowerCase()
-                      .split(' ')
-                      .map(name => name[0])
-                      .join('');
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(" ")
+      .map((name) => name[0])
+      .join("");
   });
 };
 createUsernames(accounts);
@@ -140,7 +142,7 @@ createUsernames(accounts);
 // UPDATING UI
 /////////////////////////////////////////////////
 
-const updateUI = function(acc) {
+const updateUI = function (acc) {
   // Display movements
   displayMovements(acc.movements);
   // Display balance
@@ -149,29 +151,30 @@ const updateUI = function(acc) {
   calcDisplaySummary(acc);
 };
 
-
 /////////////////////////////////////////////////
 // EVENT HANDLER
 /////////////////////////////////////////////////
 let currentAccount;
 
-btnLogin.addEventListener('click', function(e) {
+btnLogin.addEventListener("click", function (e) {
   // Prevent form from submitting
   e.preventDefault();
 
   currentAccount = accounts.find(
-    acc => acc.username === inputLoginUsername.value);
+    (acc) => acc.username === inputLoginUsername.value
+  );
 
-  inputTransferAmount.value = inputTransferTo.value = '';
+  inputTransferAmount.value = inputTransferTo.value = "";
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and message
-    labelWelcome.textContent = `Welcome back ${currentAccount.owner.split(
-      ' ')[0]}`;
+    labelWelcome.textContent = `Welcome back ${
+      currentAccount.owner.split(" ")[0]
+    }`;
     containerApp.style.opacity = 100;
-    labelUi.classList.add('hide');
+    labelUi.classList.add("hide");
 
     // Clear input fields
-    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginUsername.value = inputLoginPin.value = "";
     inputLoginPin.blur();
 
     // Update UI
@@ -182,20 +185,23 @@ btnLogin.addEventListener('click', function(e) {
 /////////////////////////////////////////////////
 // IMPLEMENTING TRANSFER
 /////////////////////////////////////////////////
-btnTransfer.addEventListener('click', function(e) {
+btnTransfer.addEventListener("click", function (e) {
   e.preventDefault();
   const amount = Number(inputTransferAmount.value);
   const receiverAcc = accounts.find(
-    acc => acc.username === inputTransferTo.value);
+    (acc) => acc.username === inputTransferTo.value
+  );
 
   // Clear input fields
-  inputTransferAmount.value = inputTransferTo.value = '';
+  inputTransferAmount.value = inputTransferTo.value = "";
 
   // Validating the transfer
-  if (amount > 0 &&
+  if (
+    amount > 0 &&
     receiverAcc &&
     currentAccount.balance >= amount &&
-    receiverAcc?.username !== currentAccount.username) {
+    receiverAcc?.username !== currentAccount.username
+  ) {
     // Doing the transfer
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
@@ -208,13 +214,16 @@ btnTransfer.addEventListener('click', function(e) {
 /////////////////////////////////////////////////
 // REQUEST A LOAN
 /////////////////////////////////////////////////
-btnLoan.addEventListener('click', function(e) {
+btnLoan.addEventListener("click", function (e) {
   e.preventDefault();
 
   const amount = Number(inputLoanAmount.value);
 
   // Validate if any deposit on the account is at least 10% of the loan asked
-  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+  if (
+    amount > 0 &&
+    currentAccount.movements.some((mov) => mov >= amount * 0.1)
+  ) {
     // Add movement
     currentAccount.movements.push(amount);
 
@@ -223,21 +232,23 @@ btnLoan.addEventListener('click', function(e) {
   }
 
   // Clear input fields
-  inputLoanAmount.value = '';
+  inputLoanAmount.value = "";
 });
 
 /////////////////////////////////////////////////
 // CLOSING ACCOUNT
 /////////////////////////////////////////////////
-btnClose.addEventListener('click', function(e) {
+btnClose.addEventListener("click", function (e) {
   e.preventDefault();
 
-  if (inputCloseUsername.value === currentAccount.username &&
-    Number(inputClosePin.value) === currentAccount.pin) {
-
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
     // Find the index of the account we want to delete
     const index = accounts.findIndex(
-      acc => acc.username === currentAccount.username);
+      (acc) => acc.username === currentAccount.username
+    );
 
     // Delete the account
     accounts.splice(index, 1);
@@ -246,11 +257,11 @@ btnClose.addEventListener('click', function(e) {
     containerApp.style.opacity = 0;
 
     // Display Welcome message
-    labelUi.classList.remove('hide');
+    labelUi.classList.remove("hide");
   }
 
   // Clear input fields
-  inputCloseUsername.value = inputClosePin.value = '';
+  inputCloseUsername.value = inputClosePin.value = "";
 });
 
 /////////////////////////////////////////////////
@@ -258,10 +269,9 @@ btnClose.addEventListener('click', function(e) {
 /////////////////////////////////////////////////
 
 let sorted = false;
-btnSort.addEventListener('click', function(e) {
+btnSort.addEventListener("click", function (e) {
   e.preventDefault();
 
   displayMovements(currentAccount.movements, !sorted);
   sorted = !sorted;
 });
-

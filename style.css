@@ -352,7 +352,7 @@ footer {
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
-    bottom:0;
+    bottom: 0;
 }
 
 a {
@@ -361,6 +361,7 @@ a {
     color: #39b385;
     font-size: 1.8rem;
 }
+
 a:hover {
     color: #2e9b77;
 }
