@@ -46,7 +46,7 @@ const account4 = {
   pin: 4444,
 };
 
-const accounts = [account1, account2];
+const accounts = [account1, account2, account3, account4];
 
 // Elements
 const labelUi = document.querySelector(".hide__ui");
@@ -93,7 +93,7 @@ const displayMovements = function (movements, sort = false) {
         <div class='movements__type movements__type--${type}'>${
       i + 1
     } ${type}</div>
-        <div class='movements__value'>${mov}€</div>
+        <div class='movements__value'>${mov.toFixed(2)}€</div>
       </div>
     `;
 
@@ -106,7 +106,7 @@ const displayMovements = function (movements, sort = false) {
 /////////////////////////////////////////////////
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance}€`;
+  labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
 };
 
 /////////////////////////////////////////////////
@@ -117,13 +117,13 @@ const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter((mov) => mov > 0)
     .reduce((acc, mov) => acc + mov);
-  labelSumIn.textContent = `${Math.trunc(incomes)}€`;
+  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
 
   // Calculate and display total withdrawals from movements
   const out = acc.movements
     .filter((mov) => mov < 0)
     .reduce((acc, mov) => acc + mov);
-  labelSumOut.textContent = `${Math.trunc(out)}€`;
+  labelSumOut.textContent = `${Math.abs(out).toFixed(2)}€`;
 
   // Calculate and display total interest from each deposit
   const interest = acc.movements
@@ -134,7 +134,7 @@ const calcDisplaySummary = function (acc) {
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${Math.trunc(interest)}€`;
+  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
 };
 
 /////////////////////////////////////////////////
@@ -230,7 +230,8 @@ btnTransfer.addEventListener("click", function (e) {
 btnLoan.addEventListener("click", function (e) {
   e.preventDefault();
 
-  const amount = +inputLoanAmount.value;
+  // Round the amount of loan requested
+  const amount = Math.floor(inputLoanAmount.value);
 
   // Validate if any deposit on the account is at least 10% of the loan asked
   if (
