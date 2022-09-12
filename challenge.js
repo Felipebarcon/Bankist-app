@@ -496,7 +496,8 @@ const dogs = [
 GOOD LUCK 😀
 */
 
-/*console.log("---------------FINAL CHALLENGE---------------");
+/*
+console.log("---------------FINAL CHALLENGE---------------");
 
 const dogs = [
   { weight: 22, curFood: 250, owners: ["Alice", "Bob"] },
@@ -654,7 +655,7 @@ labelBalance.addEventListener("click", function () {
     if (i % 3 === 0) row.style.backgroundColor = "blue";
   });
 });
-*/
+
 
 console.log("---------------Numeric Separators---------------");
 // 287,460,000,000
@@ -672,3 +673,31 @@ console.log(PI);
 
 console.log(Number("230_000"));
 console.log(parseInt("230_000"));
+
+
+console.log("---------------BigInt---------------");
+console.log(2 ** 53 - 1); // biggest number that JS can represent
+console.log(Number.MAX_SAFE_INTEGER);
+
+console.log(545645465465465465465465456465465465465465456465465465464654n);
+console.log(BigInt(54564546546546546546));
+
+// Operation
+console.log(10000n + 10000n);
+console.log(23235646546546546545465465456454564n * 10000000000000000n);
+//console.log(Math.sqrt(16n));
+
+const huge = 2323231213213213132132132212n;
+const num = 23;
+console.log(huge * BigInt(num));
+
+// Exceptions
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(typeof 20n, typeof 20);
+
+console.log(huge + " Is REALLY big!!!");
+
+// Division
+console.log(10n / 3n);
+*/
