@@ -562,6 +562,7 @@ console.log(dogs.filter(checkEatingOkay));
 const dogsCopy = dogs.slice().sort((a, b) => a.recFood - b.recFood);
 console.log(dogsCopy);*/
 
+/*
 // Number
 console.log('"---------------Converting and Checking Numbers---------------"');
 console.log(23 === 23.0);
@@ -592,7 +593,7 @@ console.log(Number.isFinite(20 / 0));
 
 // MATH and Rounding
 
-console.log('"---------------Math and Rounding---------------"');
+console.log("---------------Math and Rounding---------------");
 
 console.log(Math.sqrt(25));
 console.log(25 ** (1 / 2));
@@ -629,4 +630,27 @@ console.log(Math.floor(-23.3));
 
 // Rounding decimals
 console.log((2.7).toFixed(0));
-console.log(+(2.757878).toFixed(2));
+console.log(+(2.757878).toFixed(2));*/
+
+console.log("---------------Remaining Operator---------------");
+
+console.log(5 % 2); // 5 = 2 * 2 + reminder 1
+console.log(8 % 3); // 8 = 2 * 3 + reminder 2
+
+console.log(6 % 2);
+
+console.log(7 % 2);
+
+const isEven = (n) => n % 2 === 0;
+console.log(isEven(8));
+console.log(isEven(23));
+console.log(isEven(514));
+
+labelBalance.addEventListener("click", function () {
+  [...document.querySelectorAll(".movements__row")].forEach(function (row, i) {
+    // 0, 2, 4, 6
+    if (i % 2 === 0) row.style.backgroundColor = "orangered";
+    // 0, 3, 6, 9
+    if (i % 3 === 0) row.style.backgroundColor = "blue";
+  });
+});
