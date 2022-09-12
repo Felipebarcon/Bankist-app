@@ -718,7 +718,7 @@ console.log(new Date(2037, 10, 31)); // autocorrect date
 
 console.log(new Date(0));
 console.log(new Date(3 * 24 * 60 * 60 * 1000));
-*/
+
 // Working with Dates
 const future = new Date(2037, 10, 19, 15, 25);
 console.log(future);
@@ -737,3 +737,4 @@ console.log(Date.now());
 
 future.setFullYear(2040);
 console.log(future);
+*/
