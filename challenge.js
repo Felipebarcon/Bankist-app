@@ -737,7 +737,7 @@ console.log(Date.now());
 
 future.setFullYear(2040);
 console.log(future);
-*/
+
 
 const future = new Date(2037, 10, 19, 15, 25);
 console.log(Number(future));
@@ -747,3 +747,45 @@ const calcDaysPassed = (date1, date2) =>
 
 const days1 = calcDaysPassed(new Date(2037, 3, 19), new Date(2037, 3, 9));
 console.log(days1);
+
+
+const options = {
+  style: "currency",
+  unit: "celsius",
+  currency: "EUR",
+  //useGrouping: false,
+};
+
+const num = 388845.23;
+console.log(
+  "US:           ",
+  new Intl.NumberFormat("en-US", options).format(num)
+);
+console.log(
+  "Germany:           ",
+  new Intl.NumberFormat("de-DE", options).format(num)
+);
+console.log(
+  "Browser:           ",
+  new Intl.NumberFormat(navigator.language, options).format(num)
+);
+
+
+// setTimeout
+const ingredients = ["olives", "ham"];
+
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => console.log(`${ing1} ${ing2}`),
+  3000,
+  ...ingredients
+);
+console.log("Waiting...");
+
+if (ingredients.includes("olives")) clearTimeout(pizzaTimer);
+
+// setInterval
+setInterval(function () {
+  const now = new Date();
+  console.log(now);
+}, 1000);
+*/
