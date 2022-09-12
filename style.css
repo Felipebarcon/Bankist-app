@@ -86,11 +86,28 @@ nav {
 }
 
 .secondary-heading__welcome {
-  margin-top: 15rem;
-  margin-bottom: 12.6rem;
+  padding-top: 15rem;
+  padding-bottom: 12.6rem;
+  margin: 0 auto;
   font-size: 4.8rem;
   font-weight: 600;
   color: #333;
+  width: 30ch;
+  animation: typing 3s steps(30), blink 1s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
 }
 
 .hero {
