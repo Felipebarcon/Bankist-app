@@ -12,10 +12,12 @@ https://bank-app-felipe.netlify.app/
 - Authentication service
 - Fullscreen mode
 - You can transfer money to other users
-- You can asked the bank for a loan (Based on the deposit on the account is at least 10% of the loan asked)
+- You can asked the bank for a loan (Based on the deposit on the account is at
+  least 10% of the loan asked)
 - You can close your account
 - You can sort your account movements
 - You can see your interests earns, money in and money out of your account
+- Logout Timer if you stay inactive during 5 minutes
 
 ## FAQ
 
@@ -31,7 +33,8 @@ You can use one of this accounts:
 #### How i can transfer money to another account?
 
 - simple fill the username of the account where you want to transfer the money
-- fill the amount you want to transfer. It can be more than your current balance!
+- fill the amount you want to transfer. It can be more than your current
+  balance!
 
 ## Tech Stack
 
